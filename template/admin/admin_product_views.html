@@ -1,0 +1,50 @@
+{% extends 'admin/admin_dash.html' %}
+
+
+
+{% block content %}
+
+<form method="GET" style="display:grid;grid-template-columns:1fr 1fr;">
+    <p style="margin-bottom:2%;">{{searched_form.form.seller_name}}</p>
+    <button class="btn btn-success" type="submit" style="margin-bottom:2%;width:50%;margin-left:5px;" >Search </button>
+</form>
+
+
+
+
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:20px;">
+
+{% for i in data %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">seller</th>
+      <th scope="col">model number</th>
+         <th scope="col">model name</th>
+      <th scope="col">brand</th>
+        <th scope="col"> seller name</th>
+        <th scope="col">image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>{{i.seller}}</td>
+      <td>{{i.model_number}}</td>
+      <td>{{i.model_name}}</td>
+        <td>{{i.brand}}</td>
+      <td>{{i.seller.name}}</td>
+        <td style="position:relative;"><img src="{{i.image.url}}" alt="..." style="position:absolute;width:100%;height:100%;"></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+{% endfor %}
+
+ </div>
+
+{% endblock %}

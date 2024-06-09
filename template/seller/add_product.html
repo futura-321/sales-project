@@ -1,0 +1,14 @@
+{% extends 'seller/seller_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{data|crispy}}
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+{% endblock %}

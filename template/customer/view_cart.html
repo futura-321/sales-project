@@ -1,0 +1,47 @@
+{% extends 'customer/customer_dash.html' %}
+
+{% block content %}
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:20px;">
+
+{% for i in data %}
+
+<div class="card" style="display:grid;grid-template-columns:1fr 1fr;width:550px;height:250px;background-color:#E6E6FA;">
+    <div style="position:relative;">
+      <img src="{{i.product.image.url}}" class="img-fluid rounded-start" alt="image not found" style="width:100%;height:100%;position:absolute;top:0;left:0;">
+    </div>
+      <div class="card-body">
+        <h5 class="card-title" style="color:green;">{{i.product.model_name}}</h5>
+        <p class="card-text text" style="color:brown;" >
+          name:{{i.product.model_name}}<br>
+          sim:{{i.product.sim_type}}<br>
+            color:{{i.product.color}}<br>
+            brand:{{i.product.brand}}<br>
+            price:{{i.product.price}}<br>
+
+
+             {% if i.status == 0 %}
+
+          <a href=" {% url 'buy_now' i.id %}"><button class="btn btn-success" >Buy Now</button></a>
+          <td><a href="{% url 'delete_cart' i.id %}"><button class="btn btn-danger">delete</button></a></td>
+
+            {% elif i.status == 1 %}
+
+            <p style="color:red;">payment completed!</p>
+
+          {% endif %}
+
+          </p>
+
+
+      </div>
+</div>
+
+
+{% endfor %}
+</div>
+
+
+
+
+{% endblock %}

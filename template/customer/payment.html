@@ -1,0 +1,23 @@
+{% extends 'customer/customer_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div style="display:grid;grid-template-columns:1fr;grid-gap:20px;">
+    <div style="color:red;">
+          name : {{buy_object.cart.product.model_name}}<br>
+          brand : {{buy_object.cart.product.brand}}<br>
+          color : {{buy_object.cart.product.color}}<br>
+          amount : {{buy_object.amount}}<br>
+
+    </div>
+
+<form method="POST">
+    {% csrf_token %}
+    {{data|crispy}}
+
+    <button type="submit" class="btn btn-warning">pay</button>
+</form>
+
+{% endblock %}
+
